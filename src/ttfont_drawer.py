@@ -11,9 +11,13 @@ from fontTools.ttLib import TTFont
 # from fontTools.unicode import Unicode
 
 
-def has_glyph(font_path, glyph):
-    font = TTFont(font_path)
-    for table in font['cmap'].tables:
-        if ord(glyph) in table.cmap.keys():
-            return True
-    return False
+class TtfDrawer:
+    def __init__(self, font_path):
+        self._font = TTFont(font_path)
+
+    def has_glyph(self, glyph):
+        #font = TTFont(font_path)
+        for table in self._font['cmap'].tables:
+            if ord(glyph) in table.cmap.keys():
+                return True
+        return False
