@@ -35,6 +35,7 @@ class TtfDrawer:
 
         im = Image.new(mode='L', size=glyph_size, color='white')
         drawer = ImageDraw.Draw(im)
+        # xy is Top Left corner of the text
         drawer.text(xy=(0, 0), text=glyph, font=font, fill='black')
 
         return im
