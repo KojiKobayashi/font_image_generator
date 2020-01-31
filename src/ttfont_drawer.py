@@ -26,14 +26,20 @@ class TtfDrawer:
                 return True
         return False
 
-    def draw(self, glyph, char_size):
+    def draw(self, glyph, max_size):
         if not self.has_glyph(glyph):
             return None
 
-        font = ImageFont.truetype(self._font_path, char_size)
+        font = ImageFont.truetype(self._font_path, max_size)
+        glyph_size = font.getsize(str(glyph))
 
-        im = Image.new(mode='L', size=(char_size, char_size), color='white')
+        im = Image.new(mode='L', size=glyph_size, color='white')
         drawer = ImageDraw.Draw(im)
         drawer.text(xy=(0, 0), text=glyph, font=font, fill='black')
 
         return im
+
+
+if __name__ == "__main__":
+    print('test')
+    pass

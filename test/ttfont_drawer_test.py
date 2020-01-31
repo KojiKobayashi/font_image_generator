@@ -23,8 +23,8 @@ class TestTtfontDrawer(unittest.TestCase):
         self.assertFalse(ttf.has_glyph('あ'))
 
     def test_draw(self):
-        ret = self._ttf_japanese.draw('あ', 32)
-        self.assertEqual((32, 32), ret.size)
+        ret = self._ttf_japanese.draw('a', 128)
+        self.assertEqual((81, 115), ret.size)
 
     def _get_font_path(self, ttf_filename):
         return os.path.join(self._font_dir, ttf_filename)
@@ -32,5 +32,3 @@ class TestTtfontDrawer(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-print(ttf.has_glyph(None, None))
